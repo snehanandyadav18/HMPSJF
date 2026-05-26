@@ -5,8 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SpringBootJavaFxApplication {
+
     public static void main(String[] args) {
 
         SpringApplication.run(SpringBootJavaFxApplication.class, args);
+
     }
 }
