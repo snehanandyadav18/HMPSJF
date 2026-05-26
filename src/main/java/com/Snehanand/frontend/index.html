@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMPSJF</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial;
+        }
+
+        body{
+            background:#f3f4f6;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            padding:30px;
+            border-radius:20px;
+            width:400px;
+            box-shadow:0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-bottom:15px;
+            border-radius:10px;
+            border:1px solid #ccc;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            border:none;
+            background:black;
+            color:white;
+            border-radius:10px;
+            cursor:pointer;
+        }
+
+        #message{
+            margin-top:15px;
+            text-align:center;
+            color:green;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Hospital Management System</h1>
+
+    <form id="patientForm">
+
+        <input type="text" id="name" placeholder="Patient Name" required>
+
+        <input type="number" id="age" placeholder="Age" required>
+
+        <input type="text" id="disease" placeholder="Disease" required>
+
+        <button type="submit">Add Patient</button>
+
+    </form>
+
+    <div id="message"></div>
+
+</div>
+
+<script>
+
+    document.getElementById("patientForm")
+    .addEventListener("submit", async function(e){
+
+        e.preventDefault();
+
+        try{
+
+            const response = await fetch(
+                "https://hmpsjf-1.onrender.com/"
+            );
+
+            const data = await response.text();
+
+            document.getElementById("message")
+            .innerText = data;
+
+        }catch(error){
+
+            document.getElementById("message")
+            .innerText = "Backend Error";
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
